@@ -1,5 +1,5 @@
 import {
-  // Navigate,
+  Navigate,
   Route,
   BrowserRouter as Router,
   Routes,
@@ -7,7 +7,7 @@ import {
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
-// import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 // import Investments from "./pages/Investments";
 import Login from "./pages/Login";
 
@@ -25,9 +25,9 @@ function App(): JSX.Element {
               </PrivateRoute>
             }
           >
-            {/* <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="investments" element={<Investments />} /> */}
+            {/* <Route path="investments" element={<Investments />} /> */}
           </Route>
         </Routes>
       </Router>
