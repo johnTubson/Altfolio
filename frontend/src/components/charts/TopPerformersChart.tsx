@@ -73,7 +73,7 @@ export const TopPerformersChart = memo(({ data }: TopPerformersChartProps) => {
         <BarChart
           data={data}
           layout="vertical"
-          margin={chartConfig.spacing.chartMarginsHorizontal}
+          margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
           aria-labelledby="top-performers-title"
         >
           <defs>
@@ -120,7 +120,7 @@ export const TopPerformersChart = memo(({ data }: TopPerformersChartProps) => {
           <YAxis
             type="category"
             dataKey="name"
-            width={135}
+            width={100}
             tick={{
               fontSize: chartConfig.typography.axisLabel.fontSize,
               fill: chartConfig.colors.text,

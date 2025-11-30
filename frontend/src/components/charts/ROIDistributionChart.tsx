@@ -81,7 +81,7 @@ export const ROIDistributionChart = memo(
           <BarChart
             data={data}
             layout="vertical"
-            margin={chartConfig.spacing.chartMarginsHorizontal}
+            margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
             aria-labelledby="roi-distribution-title"
           >
             <defs>
@@ -118,7 +118,7 @@ export const ROIDistributionChart = memo(
             <YAxis
               type="category"
               dataKey="range"
-              width={130}
+              width={100}
               tick={{
                 fontSize: chartConfig.typography.axisLabel.fontSize,
                 fill: chartConfig.colors.text,

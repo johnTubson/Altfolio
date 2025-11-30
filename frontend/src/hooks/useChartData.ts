@@ -28,19 +28,30 @@ export const usePortfolioValueOverTime = (investments: Investment[]) => {
         date: new Date(date.getFullYear(), date.getMonth(), 1),
       };
     });
-    return Object.values(monthlyData)
-      .sort((a, b) => a.date.getTime() - b.date.getTime())
-      .map((values) => ({
+    const sortedData = Object.values(monthlyData).sort(
+      (a, b) => a.date.getTime() - b.date.getTime()
+    );
+
+    return sortedData.map((values, index) => {
+      const ind = index - 1;
+      const prevInvested =
+        index > 0 ? (sortedData[ind] ? sortedData[ind].invested : 0) : 0;
+      const prevCurrent =
+        index > 0 ? (sortedData[ind] ? sortedData[ind].current : 0) : 0;
+
+      return {
         month: values.date.toLocaleDateString("en-US", {
           month: "short",
           year: "numeric",
         }),
-        invested: Math.round(values.invested * 100) / 100,
-        current: Math.round(values.current * 100) / 100,
-      }));
+        invested: Math.round((values.invested - prevInvested) * 100) / 100,
+        current: Math.round((values.current - prevCurrent) * 100) / 100,
+        cumulativeInvested: Math.round(values.invested * 100) / 100,
+        cumulativeCurrent: Math.round(values.current * 100) / 100,
+      };
+    });
   }, [investments]);
 };
-
 export const useROIDistribution = (investments: Investment[]) => {
   return useMemo(() => {
     const bins = [

@@ -156,7 +156,7 @@ export const PortfolioValueChart = memo(
             />
             <Line
               type="monotone"
-              dataKey="invested"
+              dataKey="cumulativeInvested"
               stroke={chartConfig.colors.primary}
               strokeWidth={chartConfig.chart.strokeWidth.line}
               name="Cumulative Invested"
@@ -173,7 +173,7 @@ export const PortfolioValueChart = memo(
             />
             <Line
               type="monotone"
-              dataKey="current"
+              dataKey="cumulativeCurrent"
               stroke={chartConfig.colors.success}
               strokeWidth={chartConfig.chart.strokeWidth.line}
               name="Cumulative Current Value"
