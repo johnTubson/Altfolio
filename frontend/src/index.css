@@ -7,3 +7,29 @@
     @apply font-sans antialiased;
   }
 }
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Chart card hover effects */
+  .chart-card {
+    @apply bg-white rounded-xl shadow-lg p-6 transition-shadow duration-300;
+  }
+
+  .chart-card:hover {
+    @apply shadow-xl;
+  }
+
+  .chart-title {
+    @apply text-xl font-semibold text-gray-800 mb-6;
+  }
+}

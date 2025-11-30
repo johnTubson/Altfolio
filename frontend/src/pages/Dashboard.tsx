@@ -60,14 +60,16 @@ const Dashboard = (): JSX.Element => {
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Dashboard</h1>
+
+      {/* Tier 1: Key Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
         <StatCard
           title="Total Invested"
-          value={`$${formatCurrency(stats.summary.totalInvested)}`}
+          value={`${formatCurrency(stats.summary.totalInvested)}`}
         />
         <StatCard
           title="Current Value"
-          value={`$${formatCurrency(stats.summary.totalCurrent)}`}
+          value={`${formatCurrency(stats.summary.totalCurrent)}`}
         />
         <StatCard
           title="Total ROI"
@@ -81,16 +83,26 @@ const Dashboard = (): JSX.Element => {
         />
         <StatCard title="Total Investments" value={stats.summary.totalCount} />
       </div>
-      <PortfolioValueChart data={portfolioValueOverTime} />
+
+      {/* Tier 2: Primary Overview - Portfolio Value Over Time */}
+      <div className="mb-8">
+        <PortfolioValueChart data={portfolioValueOverTime} />
+      </div>
+
+      {/* Tier 3: Performance Analysis */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <TopPerformersChart data={topPerformersByProfitLoss} />
         <ROIByAssetTypeChart data={roiByAssetType} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+      {/* Tier 4: Distribution & Breakdown */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
         <InvestmentsByTypeChart data={pieData} />
         <ROIDistributionChart data={roiDistribution} />
         <ValueByAssetTypeChart data={barData} />
       </div>
+
+      {/* Tier 5: Recent Activity */}
       <RecentInvestmentsTable investments={investments} />
     </div>
   );
